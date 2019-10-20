@@ -7,7 +7,7 @@ body {
 /*navigation*/
 .navigation {
     display: flex;
-    justify-content:  center;
+    justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
 }
@@ -20,7 +20,7 @@ body {
 
 .navigation li {
     display: inline-block;
-    
+
 }
 
 .navigation a {
@@ -38,29 +38,30 @@ body {
 /*main*/
 
 .content-rwd {
+    /* flex container - using two - 1# for svg elements, 2# - for imgs */
+    position: relative;
     display: flex;
-    justify-content:  center;
+    justify-content: center;
     align-items: center;
     flex-flow: row wrap;
-    margin: 2rem auto;
+    margin-top: 2rem auto;
 }
 
-.img-content {
-    margin-left: 3rem;
-    margin-right: 3rem;
-    margin-bottom: 3rem;
+
+.content-info {
+    position: relative;
+    text-align: center;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 7rem;
+
 }
 
-.svg-content {
+.png {
+    margin-bottom: 10rem;
+}
+.img-content-logo {
     width: 300px;
-    transition: all 0.3s;
-
-}
-
-.img-content img {
-    width: 400px;
-    transition: all 0.3s;
-
 }
 
 /*footer*/
@@ -69,19 +70,74 @@ body {
     display: none;
 }
 
+/*click*/
 
+.hiden-logo {
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.7s;
+}
+
+.visible-logo {
+    opacity: 1;
+    z-index: 999;
+    transition: all 0.7s;
+}
+
+.hiden-text {
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0.5);
+    transition: all 0.7s;
+}
+
+.visible-text {
+    opacity: 1;
+    z-index: 999;
+    padding: 20px 20px;
+    transform: scale(1.2);
+    filter: drop-shadow(0px 5px 4px rgb(224, 224, 224));
+    transition: all 0.7s;
+}
+
+
+.display-onclick-logo-text {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 64px;
+    font-weight: 900;
+    margin: auto;
+}
+
+.display-onclick-logo {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 80px;
+    padding-right: 1rem;
+    margin: auto;
+}
+
+.display-onclick-desc {
+    display: block;
+    padding-top: 20px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.5rem;
+}
 /*RWD*/
 @media (min-width: 550px) {
     .navigation {
         display: flex;
-        justify-content:  flex-end;
+        justify-content: flex-end;
         align-items: center;
     }
-    
+
     .orange-link:hover {
         color: #ffc400;
         border-color: #ffc400;
-        
+
     }
 
     .red-link:hover {
@@ -92,18 +148,20 @@ body {
     .blue-link:hover {
         color: #01cbd6;
         border-color: #01cbd6;
-       
+
     }
 
     @keyframes spin-reverse {
         from {
-          transform: rotate(360deg);
+            transform: rotate(360deg);
         }
+
         to {
-          transform: rotate(0deg);
+            transform: rotate(0deg);
         }
-      }
-    
+    }
+
+
     .svg-logo {
         height: 5rem;
         display: block;
@@ -113,30 +171,48 @@ body {
         animation-name: spin-reverse;
         animation-duration: 1000ms;
         animation-iteration-count: 1;
-        animation-timing-function: ease-in-out;  
+        animation-timing-function: ease-in-out;
     }
 
-    .img-content:hover svg, .img-content:hover img {
+    .div-onclick {
+        /*div with info showed/hidden on svg/img click */
+        position: absolute;
+        background-color: white;
+        top: 0;
+        margin: auto;
+        width: 300px;
+        height: 320px;
+        transition: all 0.7s;
+    }
+
+    .img-content-logo:hover {
         transform: scale(1.1);
         filter: drop-shadow(0 0 30px #333);
+        transition: all 0.7s;
     }
-        
+
+    .div-onclick:hover, .img-content-logo:hover {
+        cursor: pointer;
+    }
+
     @keyframes spin {
         from {
-          transform: rotate(0deg);
+            transform: rotate(0deg);
         }
+
         to {
-          transform: rotate(360deg);
+            transform: rotate(360deg);
         }
-      }
-        #menu-bar:hover ~.svg-logo, .svg-logo:hover {
+    }
+
+    #menu-bar:hover~.svg-logo,
+    .svg-logo:hover {
         opacity: 1.0;
         animation-name: spin;
         animation-duration: 2000ms;
         animation-iteration-count: infinite;
-        animation-timing-function: linear; 
+        animation-timing-function: linear;
     }
-
 
 }
 
